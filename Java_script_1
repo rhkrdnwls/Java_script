@@ -1,0 +1,10 @@
+1. Javascript와 Java는 완전히 유형이 다른 언어이다. 
+
+Javascript의 4가지 특징
+1. 동적 약형 프로그래밍이다.(Dynamic, weakly-typed programming language)
+2. 진행중의 컴파일이 된다.
+3. 여러 환경에서 실행이 된다.(Hosted language)
+4. 웹페이지의 브라우저에서 코드를 실행하여 보다 동적으로 만드는 것이다. 
+
+-컴파일(compile) : 인간이 이해 가능한 소스 코드에서  CPU가 이해할 수 있는 언어로 변환하는 것
+- Javascript은 처음에 변수형을 지정하지 않아도 된다.(데이터 유형을 동적을 전환 할 수 있다.) 
