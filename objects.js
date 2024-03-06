@@ -9,6 +9,17 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
     outputResult(currentResult, calcDescription); // currentResult는 전역변수이기 때문에 참조가 가능하다. 
 }
 
+function writeToLog(operationIdentifier, prevResult, operationNumber, newResult) {
+    const logEntry = {
+        operation: operationIdentifier,
+        prevResult: prevResult,
+        number: operationNumber,
+        result: newResult
+    }; 
+    logEntries.push(logEntry);
+    console.log(logEntries);
+
+}
 function add(){
     const enteredNumber = getUserInput();
     // const enteredNumber = getUserInput(); // 이렇게 위에 함수를 생성해서 그 함수를 호출해서 사용하는 방식도 있다. 
@@ -16,7 +27,8 @@ function add(){
     const initialResult = currentResult;
     currentResult = currentResult + enteredNumber;
     createAndWriteOutput('+', initialResult, enteredNumber);
-    const logEntry = {
+    writeToLog('ADD', initialResult, enteredNumber, currentResult);
+    /*const logEntry = {
         operation: 'ADD',
         prevResult: initialResult,
         number: enteredNumber,
@@ -26,5 +38,38 @@ function add(){
     console.log(logEntry.operation); // 이렇게 객체 뒤에 .을 찍음으로서 객체에 있는 일부 키에만 접근이 가능하다.
     //점 표기법을 통해 객체의 데이터로 접근이 가능하다. 
     console.log(logEntries);
+    */
 
 }
+
+function subtract() {
+    const enteredNumber = getUserInput();
+    const initialResult = currentResult;
+    ccurrentResult = currentResult - enteredNumber;
+    createAndWriteOutput('-', initialResult, enteredNumber);
+    writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
+}
+
+function multiply() {
+    const enteredNumber = getUserInput();
+    const initialResult = currentResult;
+    currentResult = currentResult * enteredNumber;
+    createAndWriteOutput('*', initialResult, enteredNumber);
+    writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
+}
+
+function divide() {
+    const enteredNumber = getUserInput();
+    const initialResult = currentResult;
+    currentResult = currentResult / enteredNumber;
+    createAndWriteOutput('/', initialResult, enteredNumber);
+    writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
+}
+
+
+addBtn.addEventListener('click', add);
+subtractBtn.addEventListener('click', subtract);
+multiplyBtn.addEventListener('click', multiply);
+divideBtn.addEventListener('click', divide);
+
+
