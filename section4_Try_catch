@@ -4,7 +4,7 @@ throw : 새로운 오류를 만드는 키워드이다 + 무엇이든 오류가 �
 throw {message : 'Invalid user input, not a number'}; (메세지 프로퍼티의 객체를 오류로 발생시킨다.  대부분의 오류는 메서지 프로퍼티가 있는 오류이다.)
 
 try - catch는 어떻게 사용해야 할까: 바로 실패할 수 있는 코드에 try - catch를 맵핑한다. 
-오류 발생 여부를 제어할 수 없는 부분만 try에 맵핑 해야 한다. 
+오류 발생 여부를 제어할 수 없는 부분만 try에 맵핑 해야 한다.  
 function getMaxLifeValues() {
     const enrteredValue = prompt("Please enter the Maximum life", '100'); // 파이썬의 input 함수와 동일하다. 
     const parsedValue = parseInt(enrteredValue);
