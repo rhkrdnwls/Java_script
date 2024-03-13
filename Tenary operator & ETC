@@ -1,0 +1,38 @@
+1. 삼항연산자
+물음표 연산자와 콜론 연산자로 삼항 연산자를 만들 수 있다. 
+const userName = isLogin ? 'Max' : null
+isLogin : 내가 확인하고 싶은 조건문이다. if문처럼 다양한 조건을 활용할 수 있고, And/Or 조건과 결합해 사용이 가능하다. 
+isLogin이 True면 userName에는 'Max'가 저장된다. 
+isLogin이 False면 userName에는 null이 저장이 된다.
+
+2. 느낌표 2개 연산자.
+느낌표 하나(!)는 값을 부정하는데 많이 사용이 된다. 
+느낌표 2개(!!)를 사용하면 falsy나 truthy값을 실제 false나 true의 값으로 변환이 가능하다.(2중 부정)
+
+3. And 연산자(&&)와 OR연산자(||)
+
+const Name = someInput || 'Max'
+-or 연산자는 실제로 boolean을 생성하지 않는다. 
+-or 연산자는 첫번째로 발견한 truthy값을 반환한다.(왼쪽부터 스캔한다.)
+-이 예제에서는 someInput이 falsy값이라면 truthy의 값인 'Max'가 Name에 들어간다.('Max'는 비어있는 문자열이 아니기 때문에 truthy값이다.)
+- someInput이 true라면 당연히 someInput의 값이 Name에 들어가게 된다. 
+
+And연산자는 결합한 조건의 마지막 값을 반환한다. 
+첫번째 값이 True라면 두번째 값을 반환한다.
+첫번째 값이 False라면 첫번째 값을 반환한다. 
+A && B -->  A가 참이라면 무조건 B을 반환한다. 
+            B가 참이라면 무조건 A을 반환한다.
+(B에 배열이 들어가도 된다. -> ['Books']처럼)
+
+4. Switch - case 구문
+switch(num) {
+  case b;
+    num이 b일 경우에 실행할 코드;
+    break;
+  case a;
+    num이 a일 경우에 실행할 코드;
+    break;
+}
+default 코드도 같이 사용한다. 
+default : 매칭이 되는 코드가 없다면 실행해야할 코드를 지정한다. 
+
