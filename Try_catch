@@ -18,5 +18,8 @@ let chosenMaxLife
 try{
     chosenMaxLife= getMaxLifeValues();
 }catch(error) { // 여기에 있는 error는 catch 구문에 의해 잡힌 오류를 사용할 수 있다. 
-    
+    console.log(error); // 받은 error를 console에 띄워서 오류내에 어떤 내용이 있었는지 확인이 가능하다. 
+    chosenMaxLife = 100; // error가 나면 catch부분이 실행이 되므로 chosenMaxLife를 지정하지 않은 경우에 지정이 가능하다. 
 }
+- finally
+try와 try-catch와 함께 사용이 가능한 방법(try는 무조건 있어야 한다. -> (try, finally) , (try, catch ,finally), (try, catch)이렇게 3개의 경우가 있다.)
