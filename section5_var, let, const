@@ -1,0 +1,55 @@
+let으로 생성한 변수는 수정이 가능하다.
+const로 생성한 변수는 수정이 불가능하다. 
+
+var 키워드로도 변수 생성이 가능하다.
+var는 let처럼 변동이 가능한 변수를 생성한다. 
+var는 함수, 전역 스코프에서 변수 생성이 가능하다.
+
+let과 const는 함수 및 전역스코프를 사용하지 않지만 많은 경우에 블록 스코프라는 개념을 사용하는 것처럼 동작한다. 
+
+let name = 'Max';
+let name = 'Anna'; // 원래는 이런 형식의 변수 재선언이 허용되지 않는다. 동일한 스코프에서는 식별자인 name이 이미 선언이 되어있기 문에 재선언이 불가능하다.
+새 값을 할당할 수는 있다. 
+
+let name = 'Max';
+name = 'Anna';  /* 이렇게 새 값을 할당은 할 수가 있다. 
+하지만 변수를 다시 생성할 수는 없다. */
+
+var name = 'Max';
+var name = 'Anna'; // 이거는 된다. 
+--------------------------------------------------------------------------------------------
+var name = 'Max';
+
+if(name === 'Max'){
+    var hobbies = ['Sports', 'Cooking'];
+    console.log(hobbies);
+}
+
+function greet() {
+    var age = 30;
+    var name = 'Manuel';
+    console.log(name, age);
+}
+
+console.log(name, hobbies);
+
+greet();
+
+hobbies을 var로 선언 했기 때문에 if문 내에서만 사용이 가능한것이 아니고 정상적인 전역 변수처럼 사용이 가능하다. 
+하지만 function 내에서 선언한 var는 전역 변수처럼 사용이 불가능하다. 
+ - 34번 줄에서 console.log(name, hobbies) --> console.log(name age, hobbies)로 바꾼 경우 실행이 되지 않는다. 
+hobbies을 let으로 선언을 하면 if문 내에서만 사용이 가능하다. 전역 변수로 사용이 불가능하다. 
+
+31번 줄에 있는 console.log(name, age, hobbies)처럼 함수 내에서도 hobbies을 넣어서 사용할 수 있다. 
+
+- var는  전역 스코프와 함수 스코프만 알기 때문에 함수에서 생성된 변수는 밖에서 사용이 불가능 하고 전역적으로 생성된 변수는 어디서나 사용이 가능하다.
+
+만일 let과 const으로 선언된 변수를 함수 내에서도 쓰고 싶고 전역적으로도 쓰고 싶다면
+let hobbies;
+
+if(name === 'Max'){
+  hobbies = ['Sports', 'Cooking']; 이렇게 변수 선언만 전역적인 위치에서 하고 값의 선언을 함수 내에서 하면 된다. 
+}
+
+var잘 안쓴다. 진짜 거의 안쓴다. 
+해당 블록에서 사용된 let과 const는 그 블록 안에서만 사용이 가능하거나 블록에 중첩된 블록에 사용이 가능하다. 
