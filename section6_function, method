@@ -1,0 +1,74 @@
+const startGameBtn = document.getElementById('start-game-btn');
+// 이벤트 리스너를 추가할 수 있는 버튼 액세스이다. 
+
+function startGame() {
+    console.log('Game is starting...');
+}
+
+const person = {
+  name: 'Max',
+  greet: function greet() { // 함수도 객체에 포함될 수가 있다. 
+    console.log('Hello there!');
+  }
+}; // 객체는 뒤에 세미 콜론이 있어도 된다. 
+startGameBtn.addEventListener('click', startGame); 
+// 여기서 startGame()를 호출할떄에는 저렇게 괄호를 붙여서 사용하지 않고 괄호를 붙이지 않고 한다. 
+
+// 이처럼 객체에 함수가 저장된 것을 메서드라고 한다. (키나 객체에 저장된 함수를 메서드라고 부른다.)
+startGameBtn.addEventListener('click', startGame);  여기서도 그렇다면 addEventListener는 startGameBtn 객체의 메서드가 된다.
+
+console.log(typeof startGame); // startGame()이라고 쓰면 함수가 바로 호출이 된다.(자바 스크립트는 스크립트 실행전에 함수를 찾아 
+그 함수를 먼저 실행하기 때문에, 괄호를 뺀 함수의 이름만 적는다.)
+- 결과는 function이 나온다. '
+console.dir(startGame)이라고 치면 이 함수의 다양한 정보들이 나오는데 이들은 모두 키 -값 쌍을 이룬다. 
+
+- 함수는 그 자체로도 하나의 객체가 된다.
+자체가 객체이며, 아주 특별한 유형의 객체인것이다. 
+사전의 구성된 프로퍼티를 가지는 특수한 경우이다. 
+
+- 익명함수
+함수를 생성할때 이 함수를 변수나 상수에 담을 수가 있다.
+const start = function startGame() {
+  console.log('Game is starting');
+}
+이런 함수가 있다. 
+원래 자바 스크립트는 스크립트를 실행하기 전에 함수를 찾아서 먼저 실행을 한다. 하지만, 이렇게 상수와 변수에 할당되어 있는 경우
+자바 스크립트가 startGame이라는 이름으로 해당 객체를 전역 스코프에 저장하는 대신 start변수 또는 상수에 저장해서 해당 변수나 상수가
+전역 스코프에 저장이 되어 사용이 되어야 본 함수를 참조할 수 있다. 
+startGame은 함수에 연결된 내부적인 이름일뿐 전역 스코프에 등록 되지도 않고 전역 스코프에서 사용할 수 있는 값이 아닌것이다.
+대신에, 해당 상수에 저장이 된다. 
+이러면 startGame이라는 함수를 생략할 수가 있다. 
+
+const start = function() {
+  console.log('Game is starting');
+}
+키워드를 공란으로 비워두게 된다. 이를 익명함수라고 한다. 
+그리고 또한, 함수가 우측에 있는 경우에는 세미콜론을 마음껏 사용해도 된다. 원래는 문장으로 인식될수가 있어서 피했다. 
+
+// 함수를 호출하디 전, 정의되고 또 초기화된 상태여야 한다.
+1. Function Declaration (함수 선언)
+function multiply(a,b) {
+  return a*b;
+}
+함수 선언의 경우는 자바스크립트가 자동으로 함수를 맨위로 호이스트(Hoist)한다. -> 함수의 위치가 어디에 있든지 상관없이 파일의 맨위에서 
+해당 함수가 정의된 것처럼 동작한다. 
+
+
+2. function Expression (함수 표현식)
+const multiply = function(a,b) {
+  return a*b;
+}
+함수 표현은 상수가 정의되지 않은 채로 호이스트가 된다. 초기화가 이루어지지 않으니 정의되기 전까지는 함수를 호출할 수가 없다. 
+
+-익명함수
+이름 없이 익명 함수를 생성할 수가 있는데, 변수에 이를 저장하고 해당 변수의 이름이 함수를 참조할때 사용할 수 있는 이름이 된다. 
+
+startGameBtn.addEventListener('click', function() {
+  console.log('Game is starting');
+});
+// 이렇게 익명함수를 이런 방식으로 사용해도 된다.
+// 하지만 저렇게 쓰는 경우 잘못된 건 하나도 없지만, 만일 오류가 났을때 오류가 난 함수 이름에 익명함수라고 뜬다. 
+startGameBtn.addEventListener('click', function startGame() {
+  console.log('Game is starting');
+});
+// 하지만 이렇게 함수의 이름을 지정한 경우, 저기에 오류가 났을 경우 함수 이름에 startGame의 이름으로 화면에 뜨게 된다. 
