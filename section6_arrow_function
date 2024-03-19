@@ -1,0 +1,66 @@
+const getWinner = function(cChoice, pChoice) {
+}
+이런 함수가 있을때 
+const getWinner = (cChoice, pChoice) {} 이렇게 function을 제거하면 에러가 발생한다.
+하지만
+const getWinner = (cChoice, pChoice) => {} 이렇게 함수 작성을 한다면 에러가 발생하지 않는다. 이를 화살표 함수라고 한다. 
+
+화살표 함수의 특징
+1. 약간 더 짧다.
+2. 화살표 함수가 있고 1개의 표현식이 있다면 중괄호를 생략할 수 있다. 중괄호를 삭제하고 return 키워드도 생략이 가능하다.
+const getWinner = (cChoice, pChoice) =>  //화살표 함수 사용했다.
+    cChoice === pChoice ? 'DRAW' : (cChoice === ROCK && pChoice === PAPER) || (cChoice === PAPER && 
+    pChoice === SCISSORS) || (cChoice=== SCISSORS && 
+    pChoice === ROCK) ? 'PLATERS WINS' : 'COMPUTER WINS';
+이렇게 말이다. 
+또 다른 예시)
+const add = (a,b) => a + b;
+
+const add = function(a,b) {
+  return a+b;
+}
+
+화살표 함수 구
+1) 기본 구문:
+
+const add = (a, b) => {
+    const result = a + b;
+    return result; // like in "normal" functions, parameters and return statement are OPTIONAL!
+};
+주목하실 만한 사항. 마지막의 세미콜론, 함수 키워드 없음, 매개변수/인수의 괄호.
+
+2) 정확히 하나의 매개변수를 받는 경우 더 짧은 매개변수 구문.
+
+const log = message => {
+    console.log(message); // could also return something of course - this example just doesn't
+};
+주목하실 만한 사항. 매개변수 목록의 괄호는 생략할 수 있습니다(정확히 하나의 인수에 대해).
+
+3) 인수를 받지 않은 경우 빈 매개변수 괄호.
+
+const greet = () => {
+    console.log('Hi there!');
+};
+주목하실 만한 사항. 괄호를 추가해야 합니다(생략할 수 없음)
+
+4) 정확히 하나의 표현식이 사용되는 경우 더 짧은 함수 본문.
+
+const add = (a, b) => a + b;
+주목하실 만한 사항. 중괄호 및 return 문 생략 가능, 표현식 결과는 항상 자동 반환
+
+5) 함수가 객체를 반환합니다(4)의 예시와 같이 구문이 단축됨).
+
+const loadPerson = pName => ({name: pName });
+주목하실 만한 사항. 객체에 대한 추가 괄호가 필요합니다. 그렇지 않으면 중괄호는 함수 본문을 구분하는 기호로 해석되므로 구문 오류가 발생하게 됩니다.
+
+마지막 예시는 헷갈릴 수 있습니다. 보통 JavaScript에서 중괄호는 항상 정확히 하나의 의미를 가질 수 있습니다.
+
+const person = { name: 'Max' }; // 이 중괄호는 객체 생성에 쓰임
+if (something) { ... } // 중괄호로 if 문 블록을 표기함
+그러나 화살표 함수를 사용할 경우, 중괄호는 두 가지 의미를 가질 수 있습니다.
+
+1) 함수 본문 표시(기본 형식에서)
+
+2) 반환하려는 객체 생성(짧은 함수 본문 형식으로)
+
+JavaScript에 수행하려는 작업을 "알리려면" 위에 표시된 것처럼 표현식(예: 객체 생성)을 괄호로 묶으세요.
