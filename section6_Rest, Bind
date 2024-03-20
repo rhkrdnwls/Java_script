@@ -96,6 +96,7 @@ function calculationResult(calculationType) {
 addBtn.addEventListener('click', calculationResult.bind(this, 'ADD'));
 // 여기서 calculation('ADD')라고 하면 자바스크립트가 이 함수를 미리 호이스팅 한다. 우리는 이 함수가 맨처음에 실행되는것을 원치 않기 때문에 
 // 바인드를 통해 특정한 시점에 실행되도록 막을 수가 있다.
+// 바인드를 하지 않고 calculation('ADD')라고 적게 되면 NAN라고 뜨고 작동 오류가 생긴다.
 subtractBtn.addEventListener('click', calculationResult.bind(this, 'SUBTRACT'));
 multiplyBtn.addEventListener('click', calculationResult.bind(this, 'MULTIPLY'));
 divideBtn.addEventListener('click', calculationResult.bind(this, 'DIVIDE'));
