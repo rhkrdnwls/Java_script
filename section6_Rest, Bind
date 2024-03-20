@@ -67,3 +67,35 @@ combine(showResult.bind(this, 'The result after subtracting all numbers is:'), '
 이렇게 된다면 bind의 특성상
 바인드하고 고유의 인자를 설정하게 되면 (여기서는 'The result after subtracting all numbers is:' 이부분이 showResult의 첫번째 매개변수인 messageText로 보내지고 
 resultHandler에서 호출되는 sum은 고유의 구성된 인자 뒤로 오게 된다. (자동으로 매개변수의 끝으로 붙게 된다.)
+
+---------------------------------------------------------------------------------------------------------------------------
+function calculationResult(calculationType) {
+    const enteredNumber = getUserInput();
+    const initialResult = currentResult;
+    let operater;
+    if(calculationType === 'ADD') {
+        currentResult += enteredNumber;
+        operater = '+';
+    } // if문의 중괄호 뒤에도 세미콜론을 붙이지 않는다. 
+    else if(calculationType === 'SUBTRACT') {
+        currentResult -= enteredNumber;
+        operater = '-';
+    }
+    else if(calculationType === 'MULTIPLY'){
+        currentResult *= enteredNumber;
+        operater = '*';
+    }
+    else if(calculationType === 'DIVIDE') {
+        currentResult /= enteredNumber;
+        operater = '/';
+    }
+    createAndWriteOutput(operater, initialResult, enteredNumber);
+    writeToLog(calculationType, initialResult, enteredNumber, currentResult);
+}
+
+addBtn.addEventListener('click', calculationResult.bind(this, 'ADD'));
+// 여기서 calculation('ADD')라고 하면 자바스크립트가 이 함수를 미리 호이스팅 한다. 우리는 이 함수가 맨처음에 실행되는것을 원치 않기 때문에 
+// 바인드를 통해 특정한 시점에 실행되도록 막을 수가 있다.
+subtractBtn.addEventListener('click', calculationResult.bind(this, 'SUBTRACT'));
+multiplyBtn.addEventListener('click', calculationResult.bind(this, 'MULTIPLY'));
+divideBtn.addEventListener('click', calculationResult.bind(this, 'DIVIDE'));
