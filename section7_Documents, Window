@@ -1,0 +1,75 @@
+DOM은 HTML문서를 브라우저가 이해할 수 있도록 만든 Tree 자료구조이다.
+document : 브라우저에서 사용할 수 있는 최상위 객체 중 하나로 로드된 HTML 문서와 상호작용한다. 
+document는 브라우저가 노출시키는 루트 DOM 노드이다. -> 렌더링된 모든 HTML에 접근 하기 위한 최고의 엔트리 포인트이다. 
+
+window :  문서(document)가 창 객체의 프로퍼티에 해당이 된다. 그렇기 때문에 실제로 최상위 객체이고 브라우저에서 보여 주는 핵심 API에 접근이 가능하다.
+(원래 alert()도 window.alert()로 쓰는 것이 맞다. 윈도우는 최상위 객체이고 alert는 window에 포함되어 있기 때문이다.
+- document가 실제로 window의 일부이다. 하지만 window의 작동방식으로 인해 document로만 접근할 수 있고 이는 웹페이지와 로딩된 HTML코드가 상호작용하는데 도움이 된다.
+- 다른 탭에 로드된 다른 웹페이지 와는 상호작용이 불가능하다. window는 현재 로드된 탭이다. 
+
+브라우저와 자바스크립트는 항상 상호작용한다. HTML 파일이나 문서가 다운로드되면 브라우저는 이것을 분석하고 렌더링한다. 
+자바스크립트는 호스트 된 언어이다. -> 브라우저가 자바 스크립트를 실행할 환경을 제공하고 있다. (자바 스크립트 엔진을 제공해서 자바 스크립트 코드를 이해하고 분석하고 실행할 수 있게 한다.)
+또한 브라우저는 API도 제공 -> 자바 스크립트가 브라우저랑 상호작용 할 수 있게 한다. 
+
+DOM (Documnet Object Model) : 자바 스크립트가 렌더링 된 HTML코드와 상호작하게 하며 이건 문서 객체 모델이라고도 불린다. 그게 DOM이다. 
+- 로드 및 렌더링된 HTML코드를 DOM이라고 부른다. 
+
+
+요소/ 노드 쿼리
+쿼리하기 위한 메서드가 몇가지 존재, 문서 객체에서 이 메서드들을 사용한다. 
+querySelector, getElementByID : 이 메서드들은 한 번에 하나의 요소를 선택 
+querySelectorAll, getElementsByTagName : 다중 요소 선택한다. -> 유사 배열 객체인 요소의 집합을 반환한다.
+
+querySelectorAll은 정적 Nodelist, 현재 렌더링 된 DOM의 스냅샷을 제공한다. 
+getElementsByTagName와 같은 getXbyY와 같은 것은 동적 NodeList를 제공한다. 
+
+- Node & Elements
+1. Node - The Objects that make up the DOM
+HTML태그는 element node / element이다. 
+
+2. Elements(요소) - 렌더링된 HTML의 태그에서 생성된 노드이며, 내부에 텍스트가 없다. 
+(elements are one types of nodes)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+모든 쿼리 메서드는 documet에서 사용이 가능하다. document는 문서객체이다. 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DOM Interaction</title>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header><h1 id="main-title">Dive into the DOM!</h1></header> <!-- id도 넣었다 h1 태그에 -->
+    <!--  순서 없는 목록을 생성할 수 있는 키워드이다 ul은 -->
+    <ul> 
+      <li>Item 1</li>
+      <li class="list-item">Item 2</li>   <!-- 아이템2와 3에는 저런식으로 특정 클래스 부여도 가능하다. -->
+      <li class="list-item">Item 3</li>
+    </ul>
+    <input type="text" value="default text">
+  </body>
+</html>
+// 여기에 <p> </p>가 있는데 이거는 paragraph의 p이다.
+
+콘솔에서 console.log로 나오지 않는 것들은 console.dir을 통해 작성하면 더 자세한 내용이 나온다. 
+document.getElementById('main-title') --> <h1 id="main-title">Dive into the DOM!</h1> 이렇게 나온다
+document.getElementByClassName('list-item') --> [li.list-item, li.list-item] 이렇게 나오는데 이것은 for 반복문으로 접근이 가능하다. (for-of도 가능)
+
+클래스 이름이나 태그로 요소를 선택하려는 경우 getElementsBy는 너무 오래된 것이고, 주로 querySelector를 사용한다. 
+(ID를 사용해서 요소를 얻을라고 할때의 경우 예외로 getElementById를 사용한다.)
+
+document.querySelector('.list-item') -> 여기서는 CSS코드에서도 사용할 선택지가 필요하기 때문에 
+1. 클래스를 선택할때에는 .
+2. ID는 #으로 선택을 한다.
+querySelector는 첫번째로 일치하는 항목을 반환한다. 
+querySelectorAll('.list-item') -> 일치하는 모든 항목을 반환한다.
+
+document.querySelector('ul li:first-of-type'); -> 이는 순서가 없는 목록인 ul에서 첫번째로 나와 있는 항목을 반환하는 CSS 선택자가 된다. (last는 마지막이 나온다.)
+const ul = document.querySelector('ul')
+ul.querySelector('li')로도 사용이 가능하다.  // 상수와 변수에 저장해서 사용도 가능하다.
+
+- document만 사용해서는 요소를 선택할 수 없다. document로는 전체 문서, 즉 전체 헤더와 본문만을 검색하게 된다.)
