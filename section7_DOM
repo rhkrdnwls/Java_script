@@ -1,0 +1,48 @@
+  <body>
+    <header><h1 id="main-title">Dive into the DOM!</h1></header> <!-- id도 넣었다 h1 태그에 
+      순서 없는 목록을 생성할 수 있는 키워드이다 ul은 */ -->
+    <ul> 
+      <li>Item 1</li>
+      <li class="list-item">Item 2</li>   <!-- 아이템2와 3에는 저런식으로 특정 클래스 부여도 가능하다. -->
+      <li class="list-item">Item 3</li>
+    </ul>
+    <input type="text" value="default text">
+  </body>
+
+const h1 = document.getElementById('main-title');
+
+h1.textContent = 'Some new title!';
+여기에서처럼 textcontent에 새로운 값을 할당할 수 있다.
+새로운 텍스트를 할당을 한다면 브라우저가 렌더링한 DOM에 다시 반영된 후 UI에 업데이트가 된다.
+이렇게 새 값을 할당을 하면 내부에서 기존의 텍스트 노드가 제거가 된다. 기존의 텍스트 노드에서 새로운 텍스트 노드로 교체가 이루어진다.
+
+그리고 const h1 = document.getElementById('main-title'); 이렇게 값을 가지고 와도 되지만
+const h1 = document.querySelector('h1')이렇게 값을 가지고 와도 된다.
+
+ 만일 저 괄호 안에 class가 부여되어 있고 이를 확인하고 싶으면 
+ document.className으로 확인이 가능하다.
+ 새로운 CSS 클래스 할당도 가능한다. 
+ 위에 코드에는 class 클래스가 없지만 
+ h1.className = 'CSS'으로 class = 'CSS'을 새롭게 생성이 가능하다.
+
+ h1.style을 하면 객체에 할당이 가능한 다양한 CSS 스타일을 포함하고 있는 대규모의 객체로 액세스가 가능하다.
+ 배경색을 바꾸고자 할때에는 
+ h1.style.backgroundColor = 'red'
+ 이런식으로 바꾸는데 background-color라고 사용하지 않는다. 저렇게 사용하면 작동하지 않고 
+ backgroundColor로 사용을 해야한다.
+
+ - Attributes vs Properties
+
+ <input id = "input-1" class = "input - default" value = "Enter text..">
+ id, CSS class, value가 있는 input 요소가 있다.
+ 이 세가지가 HTML코드에 배치된 속성이고 HTML 코드에서 작성하기 떄문에 속성이라고 부른다. --> HTML태그에 추가하는것은 해당 태그의 속성인 것이다.
+ 브라우저가 이 속성을 수행하는 작업은 태그 이름을 기반으로 DOM 객체를 생성하는 것인데, 이것을 기반으로 일부 프로퍼티를 구성하게 된다. 
+
+ Properties
+ HTML 코드를 기반으로 생성된 객체에 저장된 값이다.
+
+- 다중 요소 선택
+document.querySelectorAll('li') --> li태그가 있는 요소를 전부 선택을 한다.
+document.getElementsByTagName으로도 설정이 가능하다.
+
+
