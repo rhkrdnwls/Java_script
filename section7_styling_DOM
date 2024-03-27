@@ -1,0 +1,6 @@
+ <section class="red-bg"> 
+ 만일 이것을 삭제하고 싶으면
+ const section = document.querySelector('section');
+ section.className = '' 이처럼 className 프로퍼티에 도달해서 빈 문자열로 만들어야 한다.
+
+ classList라는 메서드가 있다.
